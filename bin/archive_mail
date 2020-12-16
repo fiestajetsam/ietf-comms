@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Archive mail from the IETF mailing lists
+
+while IFS="" read -r p || [ -n "$p" ]; do
+    rsync -az --delete rsync.ietf.org::mailman-archive/$p /archive
+done < /etc/ietf-comms/archive.conf
