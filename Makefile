@@ -17,4 +17,8 @@ rfc:
 
 .PHONY: archive # - Fetch mail from the mail archives
 archive:
-	@docker run -v $(CURDIR)/archive:/archive -v $(CURDIR)/etc:/etc/ietf-comms/ fiestajetsam/ietf-comms archive_mail
+	@docker run -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/archive:/archive fiestajetsam/ietf-comms archive_mail
+
+.PHONY: mail # - Open mail client
+mail:
+	@docker run -e TERM=screen-256color -it -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/mail:/mail fiestajetsam/ietf-comms neomutt -F /etc/ietf-comms/muttrc
