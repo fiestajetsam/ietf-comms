@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/mbsync -a -c /etc/ietf-comms/mbsyncrc

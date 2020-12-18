@@ -5,10 +5,14 @@ RUN sed -i '/edge/s/^#//' /etc/apk/repositories
 RUN apk -U upgrade
 RUN apk add rsync
 
-RUN apk add gdbm \
+RUN apk add \
+        tmux \
+        gdbm \
         -X https://dl-cdn.alpinelinux.org/alpine/edge/main
 
-RUN apk add msmtp \
+RUN apk add \
+        msmtp \
+        isync \
         -X https://dl-cdn.alpinelinux.org/alpine/edge/community
 
 RUN apk add \
@@ -16,3 +20,5 @@ RUN apk add \
         -X https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 COPY bin/ /usr/local/bin/
+
+COPY bin/mail_sync /etc/periodic/15min/

@@ -19,6 +19,10 @@ rfc:
 archive:
 	@docker run -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/archive:/archive fiestajetsam/ietf-comms archive_mail
 
+.PHONY: mail-sync # - Fetch mail
+mail-sync:
+	@docker run -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/mail:/mail fiestajetsam/ietf-comms mbsync -a -c /etc/ietf-comms/mbsyncrc
+
 .PHONY: mail # - Open mail client
-mail:
+mail: mail-sync
 	@docker run -e TERM=screen-256color -it -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/mail:/mail fiestajetsam/ietf-comms neomutt -F /etc/ietf-comms/muttrc
