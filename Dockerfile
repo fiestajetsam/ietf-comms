@@ -17,6 +17,7 @@ RUN apk add \
 
 RUN apk add \
         neomutt \
+        slrn \
         -X https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 COPY bin/ /usr/local/bin/
