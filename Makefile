@@ -27,6 +27,6 @@ mail-sync:
 mail: mail-sync
 	@docker run -e TERM=screen-256color -it -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/mail:/mail fiestajetsam/ietf-comms neomutt -F /etc/ietf-comms/muttrc
 
-.PHONY:  mail-archive # - Read email archives locally
+.PHONY: mail-archive # - Read email archives locally
 mail-archive:
 	@docker run -e TERM=screen-256color -it -v $(CURDIR)/etc:/etc/ietf-comms/ -v $(CURDIR)/archive:/archive fiestajetsam/ietf-comms slrn -f etc/ietf-comms/slrnrc
