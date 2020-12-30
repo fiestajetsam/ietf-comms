@@ -7,6 +7,7 @@ RUN apk add rsync
 
 RUN apk add \
         tmux \
+        vim \
         gdbm \
         -X https://dl-cdn.alpinelinux.org/alpine/edge/main
 
